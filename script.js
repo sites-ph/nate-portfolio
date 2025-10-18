@@ -141,29 +141,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- In-Progress Notice Modal Logic ---
     const noticeOverlay = document.getElementById('devNoticeOverlay');
+    const modalContent = noticeOverlay ? noticeOverlay.querySelector('.modal-content') : null;
     const closeNoticeModalButton = document.getElementById('closeNoticeModalBtn');
+    const firstFocusableElement = closeNoticeModalButton; // The button is likely the only focusable element
+    const lastFocusableElement = closeNoticeModalButton; // Same as above
 
-    if (noticeOverlay && closeNoticeModalButton) {
+    if (noticeOverlay && modalContent && closeNoticeModalButton) {
+        // Function to open the modal
+        const openModal = () => {
+            noticeOverlay.classList.remove('hidden');
+            document.body.classList.add('no-scroll'); // Prevent background scroll
+            closeNoticeModalButton.focus(); // Set focus to the close button
+        };
+
         // Function to close the modal
         const closeModal = () => {
             noticeOverlay.classList.add('hidden');
+            document.body.classList.remove('no-scroll'); // Allow background scroll again
             localStorage.setItem('devNoticeClosed', 'true');
         };
 
         // Show the modal only if it hasn't been closed before
         if (localStorage.getItem('devNoticeClosed') !== 'true') {
-            noticeOverlay.classList.remove('hidden');
+            // Use setTimeout to allow CSS transitions to apply correctly on load
+            setTimeout(openModal, 100); 
         }
 
         // Event listener for the close button
         closeNoticeModalButton.addEventListener('click', closeModal);
 
-        // Event listener to close when clicking the overlay (outside the content)
+        // Event listener to close when clicking the overlay
         noticeOverlay.addEventListener('click', (e) => {
             if (e.target === noticeOverlay) {
                 closeModal();
             }
         });
-    }
 
+        // Event listener for closing with the Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !noticeOverlay.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Basic focus trapping (optional but recommended for accessibility)
+        // This keeps the Tab key within the modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab' || noticeOverlay.classList.contains('hidden')) {
+                return;
+            }
+
+            if (e.shiftKey) { // Shift + Tab
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus();
+                    e.preventDefault();
+                }
+            } else { // Tab
+                if (document.activeElement === lastFocusableElement) {
+                    firstFocusableElement.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+    }
 }); // <--- DAPAT ISA LANG ANG CLOSING BRACKET AT SEMICOLON DITO para sa DOMContentLoaded
+
