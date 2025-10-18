@@ -727,23 +727,23 @@ img {
     }
 }
 
-/* --- In-Progress Notice Modal --- */
+/* --- Professional Multi-Purpose Modal --- */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 2000;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster fade */
 }
 
 .modal-overlay.hidden {
@@ -752,44 +752,96 @@ img {
 }
 
 .modal-content {
-    background-color: var(--secondary-color);
-    padding: 2.5rem;
-    border-radius: 15px;
-    border: 1px solid var(--card-border);
-    text-align: center;
-    max-width: 450px;
-    width: calc(100% - 2rem); /* Ensure padding on small screens */
+    background-color: #1e1e1e; /* Slightly lighter dark background */
+    border-radius: 12px; /* Slightly less rounded */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 500px; /* Wider modal */
+    width: calc(100% - 2rem);
     margin: 1rem;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Softer shadow */
-    transform: translateY(0) scale(1); /* Start at final Y position */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5); /* More defined shadow */
+    transform: translateY(0) scale(1);
     opacity: 1;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; /* Added bounce effect */
+    /* Faster, more standard animation */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Structure content vertically */
+    overflow: hidden; /* Ensure rounded corners clip content */
 }
 
-/* State before modal becomes visible (for animation) */
 .modal-overlay.hidden .modal-content {
-    transform: translateY(-20px) scale(0.95); /* Start slightly higher and smaller */
+    transform: translateY(-20px) scale(0.98); /* Less drastic scale */
     opacity: 0;
 }
 
-.modal-icon {
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle header background */
+    border-bottom: 1px solid var(--card-border);
+}
+
+.modal-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+}
+
+.modal-icon-wrapper svg {
     stroke: var(--primary-color);
-    margin-bottom: 1rem;
+    width: 24px; /* Consistent icon size */
+    height: 24px;
 }
 
-.modal-content h3 {
+.modal-title {
+    flex-grow: 1; /* Title takes available space */
     color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem; /* Slightly smaller title */
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
 }
 
-.modal-content p {
-    color: var(--text-color); /* Slightly brighter than text-muted for readability */
-    margin-bottom: 2rem;
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: 1rem;
+    opacity: 0.7;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 1.5rem 1.5rem; /* Consistent padding */
+    color: var(--text-color);
     line-height: 1.7;
 }
 
-.modal-content .btn {
-    width: 100%;
-    padding: 0.8rem 1.5rem; /* Slightly larger button */
+.modal-body p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding: 1rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.1); /* Subtle footer background */
+    border-top: 1px solid var(--card-border);
+    gap: 0.75rem; /* Space between buttons if you add more */
+}
+
+.modal-footer .btn {
+    min-width: 100px; /* Give buttons a minimum width */
+    width: auto; /* Override previous 100% width */
+    padding: 0.6rem 1.2rem; /* Adjust button padding */
 }
