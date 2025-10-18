@@ -99,12 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    
-
-    // --- Fade-in Animation on Scroll ---
+    // --- Fade-in Animation on Scroll --- (ITO YUNG ORIGINAL AT TAMA)
     const faders = document.querySelectorAll('.fade-in');
     if (faders.length > 0) {
-        const appearOptions = {
+        const appearOptions = { // DITO NAKA-DEFINE YUNG appearOptions
             threshold: 0.2,
             rootMargin: "0px 0px -50px 0px"
         };
@@ -114,25 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             });
-        }, appearOptions);
+        }, appearOptions); // GINAMIT DITO NANG TAMA
 
         faders.forEach(fader => appearOnScroll.observe(fader));
     }
 
-    
+    // --- WALA NA YUNG DUPLICATE BLOCK DITO ---
 
-    // Ito yung code para sa Fade-in Animation on Scroll//
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            });
-        }, appearOptions);
 
-        faders.forEach(fader => appearOnScroll.observe(fader));
-    
-    
     // --- Disable Copy, Paste, and Right-Click ---
 
     // 1. Disable Right-Click Menu
@@ -149,8 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
             }
         }
-    
-        // --- In-Progress Notice Modal Logic ---
+    }); // <-- DAPAT MAY CLOSING BRACKET DITO ANG keydown listener
+
+
+    // --- In-Progress Notice Modal Logic ---
     const noticeOverlay = document.getElementById('devNoticeOverlay');
     const closeNoticeModalButton = document.getElementById('closeNoticeModalBtn');
 
@@ -177,4 +166,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-})});
+}); // <--- DAPAT ISA LANG ANG CLOSING BRACKET AT SEMICOLON DITO para sa DOMContentLoaded
