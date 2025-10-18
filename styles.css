@@ -758,15 +758,17 @@ img {
     border: 1px solid var(--card-border);
     text-align: center;
     max-width: 450px;
+    width: calc(100% - 2rem); /* Ensure padding on small screens */
     margin: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Softer shadow */
+    transform: translateY(0) scale(1); /* Start at final Y position */
     opacity: 1;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; /* Added bounce effect */
 }
 
+/* State before modal becomes visible (for animation) */
 .modal-overlay.hidden .modal-content {
-    transform: scale(0.9);
+    transform: translateY(-20px) scale(0.95); /* Start slightly higher and smaller */
     opacity: 0;
 }
 
@@ -782,10 +784,12 @@ img {
 }
 
 .modal-content p {
-    color: var(--text-muted);
+    color: var(--text-color); /* Slightly brighter than text-muted for readability */
     margin-bottom: 2rem;
+    line-height: 1.7;
 }
 
 .modal-content .btn {
     width: 100%;
+    padding: 0.8rem 1.5rem; /* Slightly larger button */
 }
