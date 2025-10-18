@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}); // <-- Ito ang pinaka-huling bracket ng file mo
 }); // <--- DAPAT ISA LANG ANG CLOSING BRACKET AT SEMICOLON DITO para sa DOMContentLoaded
+
 
 
