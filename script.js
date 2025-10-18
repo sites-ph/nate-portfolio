@@ -139,39 +139,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }); // <-- DAPAT MAY CLOSING BRACKET DITO ANG keydown listener
 
 
-    // --- In-Progress Notice Modal Logic ---
+    // --- Professional Multi-Purpose Modal Logic ---
     const noticeOverlay = document.getElementById('devNoticeOverlay');
     const modalContent = noticeOverlay ? noticeOverlay.querySelector('.modal-content') : null;
-    const closeNoticeModalButton = document.getElementById('closeNoticeModalBtn');
-    const firstFocusableElement = closeNoticeModalButton; // The button is likely the only focusable element
-    const lastFocusableElement = closeNoticeModalButton; // Same as above
+    const closeNoticeModalHeaderButton = document.getElementById('closeNoticeModalHeaderBtn');
+    const closeNoticeModalFooterButton = document.getElementById('closeNoticeModalFooterBtn');
 
-    if (noticeOverlay && modalContent && closeNoticeModalButton) {
+    // Define focusable elements (adjust if you add more buttons/links)
+    const firstFocusableElement = closeNoticeModalHeaderButton;
+    const lastFocusableElement = closeNoticeModalFooterButton;
+
+    if (noticeOverlay && modalContent && closeNoticeModalHeaderButton && closeNoticeModalFooterButton) {
+
         // Function to open the modal
         const openModal = () => {
             noticeOverlay.classList.remove('hidden');
-            document.body.classList.add('no-scroll'); // Prevent background scroll
-            closeNoticeModalButton.focus(); // Set focus to the close button
+            document.body.classList.add('no-scroll');
+            // Set focus to the header close button first when opened
+            setTimeout(() => closeNoticeModalHeaderButton.focus(), 50);
         };
 
         // Function to close the modal
         const closeModal = () => {
             noticeOverlay.classList.add('hidden');
-            document.body.classList.remove('no-scroll'); // Allow background scroll again
+            document.body.classList.remove('no-scroll');
             localStorage.setItem('devNoticeClosed', 'true');
         };
 
         // Show the modal only if it hasn't been closed before
         if (localStorage.getItem('devNoticeClosed') !== 'true') {
-            // Use setTimeout to allow CSS transitions to apply correctly on load
-            setTimeout(openModal, 100); 
+            // Use setTimeout to ensure initial render is complete before animating in
+            setTimeout(openModal, 100);
         }
 
-        // Event listener for the close button
-        closeNoticeModalButton.addEventListener('click', closeModal);
+        // Event listener for the HEADER close button ('X')
+        closeNoticeModalHeaderButton.addEventListener('click', closeModal);
+
+        // Event listener for the FOOTER close button ('Got it')
+        closeNoticeModalFooterButton.addEventListener('click', closeModal);
 
         // Event listener to close when clicking the overlay
         noticeOverlay.addEventListener('click', (e) => {
+            // Close only if the direct overlay element is clicked, not the content inside
             if (e.target === noticeOverlay) {
                 closeModal();
             }
@@ -184,25 +193,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Basic focus trapping (optional but recommended for accessibility)
-        // This keeps the Tab key within the modal
+        // Focus Trapping Logic
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Tab' || noticeOverlay.classList.contains('hidden')) {
-                return;
+                return; // Do nothing if not Tab or modal is hidden
             }
 
-            if (e.shiftKey) { // Shift + Tab
+            // Check if the focused element is outside the modal content
+            // This is a basic check; more complex modals might need more robust trapping
+            if (!modalContent.contains(document.activeElement)) {
+                 firstFocusableElement.focus();
+                 e.preventDefault();
+                 return;
+            }
+
+            if (e.shiftKey) { // Shift + Tab (Moving backwards)
                 if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
+                    lastFocusableElement.focus(); // Go to last element
                     e.preventDefault();
                 }
-            } else { // Tab
+            } else { // Tab (Moving forwards)
                 if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
+                    firstFocusableElement.focus(); // Go to first element
                     e.preventDefault();
                 }
             }
         });
     }
+
+}); // <-- Ito ang pinaka-huling bracket ng file mo
 }); // <--- DAPAT ISA LANG ANG CLOSING BRACKET AT SEMICOLON DITO para sa DOMContentLoaded
+
 
