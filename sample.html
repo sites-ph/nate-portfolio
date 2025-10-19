@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Details about the E-Commerce Platform project by James Darrol Nate." />
+    <meta name="keywords" content="James Darrol Nate, portfolio, web developer, project, e-commerce, react" />
+    <meta name="author" content="James Darrol Nate" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="shortcut icon" href="./img/1000003807.webp" type="image/webp" />
+
+    <script src="script.js" defer></script>
+
+    <title>Project: E-Commerce Platform | James Darrol Nate</title>
+</head>
+
+<body>
+    <header class="header" id="project-top">
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <a href="index.html#home">
+                    <h1>Portfolio</h1>
+                </a>
+            </div>
+            <ul class="navbar__menu" id="mobileMenu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <main>
+        <section class="project-detail section">
+            <h1 class="project-title fade-in">E-Commerce Platform</h1>
+
+            <div class="project-detail-layout fade-in">
+
+                <div class="project-media-column">
+                    <div class="project-media">
+                        <div class="swiper project-carousel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&crop=entropy" alt="Main screenshot of the E-commerce Platform">
+                                </div>
+                                <div class="swiper-slide video-slide"> 
+                                    <video controls autoplay controlsList="nodownload" playsinline loop src="./intro.mp4" alt="Introduction Video">{/* Optional: Add class 'video-slide' for specific styling */}
+                                    </video>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://via.placeholder.com/1080x1080/FFD700/000000?text=Project+Screenshot+3" alt="Shopping Cart Screenshot (Square Example)">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-info-column">
+                    <p class="project-dates">
+                        <span class="date-label">Date Worked On:</span> August 2025 - October 2025 <br>
+                        <span class="date-label">Released:</span> October 2025
+                    </p>
+
+                    <div class="project-description">
+                        <h2>Project Overview</h2>
+                        <p><strong>Goal/Problem:</strong> [Explain briefly why this project was created. E.g., Client needed an online store, or you wanted to learn a specific technology.]</p>
+                        <p><strong>My Role:</strong> [Clearly state what you did. E.g., Front-end development, UI design, specific feature implementation.]</p>
+                        <p><strong>Solution:</strong> [Briefly describe the final product and how it solved the initial goal/problem. E.g., Built a responsive React application with cart functionality...]</p>
+
+                        <h2>Technical Deep Dive</h2>
+                        <h4>Challenges & Solutions:</h4>
+                        <p>
+                            [Pick 1-2 key technical challenges. Explain the problem, why it was hard, what solutions you considered, why you chose the final solution (e.g., Context API vs Redux vs Prop Drilling), and briefly how you implemented it.]
+                            <br><em>Example: Managing cart state across components was complex. Prop drilling led to messy code. I opted for React's Context API to provide a centralized cart state accessible via the `useContext` hook, simplifying state management significantly.</em>
+                        </p>
+                        <h4>Interesting Implementations:</h4>
+                        <p>
+                            [Highlight a specific feature you're proud of or that involved interesting logic. E.g., How the filtering works, a cool animation, a specific API integration.]
+                            <br><em>Example: The product filtering dynamically updates displayed items using `useState` for filter criteria and `useEffect` to trigger filtering logic whenever criteria change, ensuring a responsive user experience.</em>
+                        </p>
+
+                        <h2>Key Features</h2>
+                        <ul>
+                            <li>Responsive design for desktop, tablet, and mobile.</li>
+                            <li>Dynamic product catalog display.</li>
+                            <li>Shopping cart functionality (add, remove, update quantity).</li>
+                            <li>Product filtering and sorting options.</li>
+                            <li>(Simulated) Checkout process integration.</li>
+                            <li>[Add other specific features]</li>
+                        </ul>
+
+                        <h2>Results & Key Learnings</h2>
+                        <p><strong>Outcome:</strong> [What did the project achieve? E.g., Successfully deployed, positive user feedback, specific metric achieved if applicable.]</p>
+                        <p><strong>Learnings:</strong> [What specific technical or soft skills did you gain or improve? E.g., Solidified understanding of React state management, learned importance of component reusability, improved debugging skills using browser dev tools.]</p>
+                    </div>
+
+                    <div class="project-tech-stack">
+                        <h3>Technologies Used:</h3>
+                        <span>React</span>
+                        <span>CSS Modules</span>
+                        <span>Firebase (for backend simulation)</span>
+                        <span>JavaScript (ES6+)</span>
+                        <span>HTML5</span>
+                        <span>SwiperJS</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn" target="_blank" rel="noopener noreferrer">View Live Demo</a>
+                        <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Code (GitHub)</a>
+                    </div>
+                </div>
+
+            </div> <div class="back-link fade-in">
+                <a href="index.html#projects">&larr; Back to Projects</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__socials">
+                 <a href="https://www.facebook.com/KNate06/" target="_blank" aria-label="Facebook">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook Icon" />
+                </a>
+                <a href="https://github.com/your-username" target="_blank" aria-label="GitHub">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Icon" />
+                </a>
+                <a href="https://www.instagram.com/engr.___nate/" target="_blank" aria-label="Instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon" />
+                </a>
+            </div>
+            <address class="footer__address">Legazpi City, Albay, Philippines, 4500</address>
+            <p class="footer__copyright">&copy; 2025 James Darrol Nate. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#project-top" class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">↑</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.project-carousel', {
+          loop: true,
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 30
+            }
+          }
+        });
+      });
+    </script>
+</body>
+
+</html>
